@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raising Cane's $500 Gift Card</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍗</text></svg>">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #D11920;
+      --primary-hover: #A81419;
+      --foreground: #0a0a0a;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --card-bg: #ffffff;
+      --check: #D11920;
+      --yellow: #FFF101;
+    }
+    html, body {
+      height: 100%;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #ffffff;
+      color: var(--foreground);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 7rem;
+    }
+    .container {
+      width: 100%;
+      max-width: 28rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .logo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 0.25rem;
+    }
+    .logo {
+      width: 200px;
+      height: auto;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+      margin-top: -0.75rem;
+    }
+    .card {
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.25rem 1.35rem;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .step {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .step:last-child { margin-bottom: 0; }
+    .check {
+      flex-shrink: 0;
+      width: 1.35rem;
+      height: 1.35rem;
+      border-radius: 9999px;
+      border: 2px solid var(--check);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.1rem;
+    }
+    .check svg {
+      width: 0.85rem;
+      height: 0.85rem;
+      stroke: var(--check);
+      stroke-width: 2.5;
+      fill: none;
+    }
+    .step-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      background: none;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      color: var(--foreground);
+      font-family: inherit;
+    }
+    .faq-btn:hover { text-decoration: underline; }
+    .faq-btn svg {
+      width: 1rem;
+      height: 1rem;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .faq-btn[aria-expanded="true"] svg {
+      transform: rotate(180deg);
+    }
+    .faq-content {
+      display: none;
+      padding: 0 0 1rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .faq-content.open { display: block; }
+    .trust {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .cta-wrap {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem 1rem calc(env(safe-area-inset-bottom, 0px) + 1rem);
+      background: linear-gradient(to top, #fff 70%, transparent);
+    }
+    .cta {
+      display: block;
+      width: 100%;
+      max-width: 28rem;
+      margin: 0 auto;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.125rem;
+      text-align: center;
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      box-shadow: 0 4px 14px rgba(209, 25, 32, 0.35);
+    }
+    .cta:hover { opacity: 0.92; }
+    .cta:active { opacity: 0.85; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="container">
+      <!-- Logo -->
+      <div class="logo-wrap">
+        <svg class="logo" viewBox="0 0 320 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Raising Cane's">
+          <!-- Red oval background -->
+          <ellipse cx="160" cy="45" rx="150" ry="38" fill="#D11920"/>
+          <!-- Raising (yellow script style) -->
+          <text x="160" y="28" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="18" font-weight="700" fill="#FFF101">Raising</text>
+          <!-- Cane's (white bold cursive-ish) -->
+          <text x="160" y="62" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="36" font-weight="700" fill="#FFFFFF" stroke="#000000" stroke-width="1.2" paint-order="stroke">Cane's</text>
+        </svg>
+      </div>
+
+      <h1>Raising Cane's $500 Gift Card</h1>
+      <p class="subtitle">Complete the steps below to unlock your reward</p>
+
+      <div class="card">
+        <div class="card-title">Quick Start Guide</div>
+        <div class="step">
+          <div class="check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <div>
+            <div class="step-title">Enter a valid email</div>
+            <div class="step-desc">For confirmation and updates</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <div>
+            <div class="step-title">Complete 4–5 deals</div>
+            <div class="step-desc">More deals, more rewards</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <div>
+            <div class="step-title">Must be 18 years or older</div>
+            <div class="step-desc">Required to participate</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Common Questions</div>
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false" onclick="toggleFaq(this)">
+            How long do the deals take?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+          </button>
+          <div class="faq-content">
+            Most deals take just a few minutes to complete. Some may require a short trial or survey. You can finish the required 4–5 deals in under 15–20 minutes in most cases.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false" onclick="toggleFaq(this)">
+            What kind of deals are included?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+          </button>
+          <div class="faq-content">
+            Deals typically include free app downloads, short surveys, product trials, or newsletter sign-ups from trusted partners. No credit card is required for the free offers.
+          </div>
+        </div>
+      </div>
+
+      <div class="trust">
+        <p>SSL Secured • Encrypted • Verified • 100% Safe</p>
+        <p>© 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-wrap">
+    <a class="cta" href="https://giftclick.org/?offer_id=4210&amp;aff_id=157440" target="_blank" rel="noopener noreferrer">
+      Claim Now
+    </a>
+  </div>
+
+  <script>
+    function toggleFaq(btn) {
+      const content = btn.nextElementSibling;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.faq-btn').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling.classList.remove('open');
+      });
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        content.classList.add('open');
+      }
+    }
+  </script>
+</body>
+</html>
